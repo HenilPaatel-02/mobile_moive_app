@@ -1,11 +1,12 @@
+import HomeHeader from "@/components/home/HomeHeader";
 import Icon from "@/components/Icon";
 import { logoutUser } from "@/utils/auth";
 import { router } from "expo-router";
 import React from "react";
 import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { styles } from "../../styles/settingStyles";
+import { styles } from "../../styles/profileStyles";
 
-export default function Settings() {
+export default function Profile() {
   const handleLogout = () => {
     Alert.alert("Logout", "Are you sure you want to logout?", [
       { text: "Cancel", style: "cancel" },
@@ -21,11 +22,12 @@ export default function Settings() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Settings</Text>
+      <HomeHeader />
+      <Text style={styles.header}>Profile</Text>
 
       <View style={styles.card}>
         <Icon name="account-circle-outline" size={30} color="#7B3F00" />
-        <Text style={styles.cardText}>Profile Settings</Text>
+        <Text style={styles.cardText}>Settings</Text>
       </View>
 
       <View style={styles.card}>
@@ -44,7 +46,7 @@ export default function Settings() {
       </View>
 
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Icon name="logout" size={26} color="#fff" />
+        <Icon name="logout" size={26} color="#3A3A3A" />
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
     </ScrollView>

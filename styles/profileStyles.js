@@ -1,76 +1,51 @@
+import { COLORS, SPACING } from "@/constants/colors";
 import { StyleSheet } from "react-native";
-import { theme, ui } from "./theme";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: theme.colors.background ,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    flexGrow: 1,
+    backgroundColor: COLORS.bgPrimary,
+    padding: SPACING.xl,
+    paddingTop: SPACING.xxl,
   },
-  title: {
+  header: {
     fontSize: 26,
-    fontWeight: 'bold',
-    color: theme.colors.textDark,
-    marginBottom: 20,
-    textTransform: 'uppercase',
+    fontWeight: "700",
+    color: "#7B3F00",
+    textAlign: "center",
+    marginVertical: 20,
   },
-  image: {
-    width: "80%",
-    height: "30%",
-    borderRadius: 15,
-    marginBottom: 25,
-    resizeMode: 'cover',
-    shadowColor: ui.shadow,
-    shadowRadius: 6,
-    elevation: 6,
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.08)'
-  },
-  mainButton: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 14,
-    paddingHorizontal: 50,
+  card: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    padding: 15,
     borderRadius: 12,
-    marginBottom: 25,
-    elevation: 4,
-  },
-  mainButtonText: {
-    color: theme.colors.background,
-    fontSize: 18,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  counterContainer: {
-    alignItems: 'center',
-    backgroundColor: ui.glass,
-    padding: 20,
-    borderRadius: 15,
-    width: '85%',
-    elevation: 3,
-    shadowColor: '#000',
+    marginBottom: 15,
+    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
+    elevation: 3,
   },
-  counterText: {
-    fontSize: 22,
-    fontWeight: '600',
-    marginBottom: 15,
-  },
-  row: {
-    flexDirection: 'row',
-    gap: 15,
-  },
-  smallButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: theme.colors.textLight,
+  cardText: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
+    color: "#333",
+    marginLeft: 15,
+  },
+  logoutButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#C9C7A3",
+    padding: 15,
+    borderRadius: 12,
+    justifyContent: "center",
+    marginTop: 25,
+  },
+  logoutText: {
+    color: "#3A3A3A",
+    fontSize: 18,
+    fontWeight: "600",
+    marginLeft: 8,
   },
 });
-

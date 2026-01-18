@@ -1,6 +1,6 @@
 export const APP_CONSTANTS = {
   ROUTES: {
-    HOME: "/(drawer)/home",
+    HOME: "/(tab)/home",
     LOGIN: "/login",
     REGISTER: "/register",
   },

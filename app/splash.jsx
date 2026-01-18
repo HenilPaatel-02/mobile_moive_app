@@ -1,4 +1,3 @@
-import Icon from "@/components/Icon";
 import { getUserSession } from "@/utils/auth";
 import { APP_CONSTANTS } from "@/utils/constants";
 import { router } from "expo-router";
@@ -29,28 +28,21 @@ export default function Splash() {
 
   return (
     <View style={styles.container}>
+      <ActivityIndicator
+        size="large"
+        color="#7B3F00"
+        style={{ marginBottom: 30 }}
+      />
       <Image
-        source={require("@/assets/images/logo-coffee.jpg")}
+        source={require("@/assets/images/logo-coffee.svg")}
         style={styles.logo}
         resizeMode="contain"
       />
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Icon
-          family="MaterialCommunityIcons"
-          name="coffee-maker"
-          size={34}
-          color="#7B3F00"
-        />
         <Text style={[styles.title, { marginLeft: 6 }]}>
-          Welcome to CoffeeHub
+          Discover CoffeeHub
         </Text>
       </View>
-
-      <ActivityIndicator
-        size="large"
-        color="#7B3F00"
-        style={{ marginTop: 20 }}
-      />
     </View>
   );
 }

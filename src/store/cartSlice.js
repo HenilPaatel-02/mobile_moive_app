@@ -1,33 +1,61 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  items: [],
+};
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    items: {}, // { [id]: quantity }
-    totalCount: 0,
-  },
+  initialState,
   reducers: {
     addToCart: (state, action) => {
-      const id = action.payload?.id;
-      if (!id) return;
-      const qty = state.items[id] || 0;
-      state.items[id] = qty + 1;
-      state.totalCount = Object.values(state.items).reduce((s, v) => s + v, 0);
+      const item = action.payload;
+
+      if (!Array.isArray(state.items)) {
+        state.items = [];
+      }
+
+      const existingItem = state.items.find(
+        (i) => i.id === item.id && i.size === item.size
+      );
+
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        state.items.push({
+          ...item,
+          qty: 1,
+        });
+      }
     },
+
+    decreaseQty: (state, action) => {
+      const item = action.payload;
+
+      const existingItem = state.items.find(
+        (i) => i.id === item.id && i.size === item.size
+      );
+
+      if (existingItem && existingItem.qty > 1) {
+        existingItem.qty -= 1;
+      }
+    },
+
     removeFromCart: (state, action) => {
-      const id = action.payload?.id;
-      if (!id) return;
-      const qty = state.items[id] || 0;
-      if (qty <= 1) delete state.items[id];
-      else state.items[id] = qty - 1;
-      state.totalCount = Object.values(state.items).reduce((s, v) => s + v, 0);
+      const item = action.payload;
+
+      state.items = state.items.filter(
+        (i) => !(i.id === item.id && i.size === item.size)
+      );
     },
+
     clearCart: (state) => {
-      state.items = {};
-      state.totalCount = 0;
+      state.items = [];
     },
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, decreaseQty, removeFromCart, clearCart } =
+  cartSlice.actions;
+
 export default cartSlice.reducer;
